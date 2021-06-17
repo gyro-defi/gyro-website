@@ -39,7 +39,7 @@ const HeroContainer = tw.div`z-20 relative px-6 sm:px-8 mx-auto h-full flex flex
 const Content = tw.div`px-4 flex flex-1 flex-col justify-center items-center`
 
 const Heading = styled.h1`
-  ${tw`text-5xl text-center  sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-extrabold text-gray-100 leading-tight -mt-24 sm:mt-0`}
+  ${tw`text-5xl text-center  sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-bold text-gray-100 leading-tight -mt-24 sm:mt-0`}
   span {
     ${tw`inline-block mt-2`}
   }
