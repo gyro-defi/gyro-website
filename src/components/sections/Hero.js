@@ -36,7 +36,7 @@ const Container = styled.div`
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-gray-900 opacity-25`
 
 const HeroContainer = tw.div`z-20 relative px-6 sm:px-8 mx-auto h-full flex flex-col`
-const Content = tw.div`px-4 pb-32 flex flex-1 flex-col justify-center items-center`
+const Content = tw.div`px-4 flex flex-1 flex-col justify-center items-center`
 
 const Heading = styled.h1`
   ${tw`text-5xl text-center  sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-extrabold text-gray-100 leading-tight -mt-24 sm:mt-0`}
