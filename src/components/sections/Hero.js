@@ -6,20 +6,14 @@ import { useTranslation } from 'react-i18next'
 
 import { SectionDescription } from 'components/misc/Typography.js'
 
-import HeaderBase, {
-  NavLink as NavLinkBase,
-  NavLinks,
-  PrimaryLink as PrimaryLinkBase,
-} from '../headers/light.js'
+import HeaderBase, { NavLink as NavLinkBase, NavLinks, PrimaryLink as PrimaryLinkBase } from '../headers/light.js'
 
 import logoImageSrc from 'images/logo-light.svg'
 import sectionBgImage from 'images/section-01-bg.svg'
 
 const Content2Xl = tw.div`max-w-screen-2xl mx-auto h-screen`
 const Header = tw(HeaderBase)`max-w-none py-8 -mx-8 px-8`
-const NavLink = tw(
-  NavLinkBase,
-)`lg:text-gray-100 lg:hocus:text-gray-300 lg:hocus:border-gray-100`
+const NavLink = tw(NavLinkBase)`lg:text-gray-100 lg:hocus:text-gray-300 lg:hocus:border-gray-100`
 const LogoLink = styled.div`
   ${tw`text-gray-100 hocus:text-gray-300`}
   img {
@@ -45,9 +39,7 @@ const Heading = styled.h1`
   }
 `
 
-const Description = tw(
-  SectionDescription,
-)`mt-4 max-w-2xl text-gray-100 lg:text-base mx-auto lg:mx-0`
+const Description = tw(SectionDescription)`mt-4 max-w-2xl text-gray-100 lg:text-base mx-auto lg:mx-0`
 
 const PrimaryAction = tw.button`rounded-full px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 font-bold shadow transition duration-300 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:outline-none focus:shadow-outline`
 
@@ -69,7 +61,7 @@ export default () => {
       <NavLink href="#how-to-join">{t('menu.how-to-join')}</NavLink>
       <NavLink href="#join-community">{t('menu.join-community')}</NavLink>
       {/* <PrimaryLink href="#">Signup</PrimaryLink> */}
-    </NavLinks>,
+    </NavLinks>
   ]
 
   return (

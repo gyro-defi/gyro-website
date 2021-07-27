@@ -3,10 +3,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 //eslint-disable-next-line
 import { css } from 'styled-components/macro'
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from 'components/misc/Headings.js'
+import { SectionHeading, Subheading as SubheadingBase } from 'components/misc/Headings.js'
 import { SectionDescription } from 'components/misc/Typography.js'
 
 import Icon01 from 'images/icon-01.svg'
@@ -59,7 +56,7 @@ export default ({
   cards = null,
   heading = 'Currency built for the new financial system',
   subheading = null,
-  description = null,
+  description = null
 }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
@@ -73,18 +70,18 @@ export default ({
     {
       imageSrc: Icon01,
       title: 'GRO Bonding',
-      description: 'Provide liquidity and get GRO at discount.',
+      description: 'Provide liquidity and get GRO at discount.'
     },
     {
       imageSrc: Icon02,
       title: 'Staking',
-      description: 'Stake and earn high rewards.',
+      description: 'Stake and earn high rewards.'
     },
     {
       imageSrc: Icon03,
       title: 'Decentralized Exchange',
-      description: 'Swap GRO on any decentralized exchanges.',
-    },
+      description: 'Swap GRO on any decentralized exchanges.'
+    }
   ]
 
   if (!cards) cards = defaultCards

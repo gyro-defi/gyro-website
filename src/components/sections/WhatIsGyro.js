@@ -3,10 +3,7 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 //eslint-disable-next-line
 import { css } from 'styled-components/macro'
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from 'components/misc/Headings.js'
+import { SectionHeading, Subheading as SubheadingBase } from 'components/misc/Headings.js'
 import { SectionDescription } from 'components/misc/Typography.js'
 
 import Icon01 from 'images/icon-01.svg'
@@ -59,27 +56,27 @@ export default ({
   cards = null,
   heading = 'Currency built for the new financial system',
   subheading = null,
-  description = "Gyro is a decentralized currency that isn't pegged to any fiat currency. By using algorithmic control of market dynamics, Gyro's stable-currency aims to curb inflation and give users the same purchasing power tomorrow as they do today",
+  description = "Gyro is a decentralized currency that isn't pegged to any fiat currency. By using algorithmic control of market dynamics, Gyro's stable-currency aims to curb inflation and give users the same purchasing power tomorrow as they do today"
 }) => {
   const defaultCards = [
     {
       imageSrc: Icon01,
       title: 'Asset-backed',
       description:
-        'Every GRO is backed by multi-asset stablecoins and GRO-USDT LP in the treasury. This ensures GRO will be greater than or equal to 1 USDT.',
+        'Every GRO is backed by multi-asset stablecoins and GRO-USDT LP in the treasury. This ensures GRO will be greater than or equal to 1 USDT.'
     },
     {
       imageSrc: Icon02,
       title: 'Protocol-controlled',
       description:
-        'The treasury and reserve are managed and controlled by the protocol itself; allowing transparency and fairness for all participants.',
+        'The treasury and reserve are managed and controlled by the protocol itself; allowing transparency and fairness for all participants.'
     },
     {
       imageSrc: Icon03,
       title: 'Community Governed',
       description:
-        'Gyro is a community-driven open protocol where GRO token holders can suggest, debate and implement changes to Gyro.',
-    },
+        'Gyro is a community-driven open protocol where GRO token holders can suggest, debate and implement changes to Gyro.'
+    }
   ]
 
   if (!cards) cards = defaultCards

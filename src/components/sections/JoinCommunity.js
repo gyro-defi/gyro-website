@@ -2,10 +2,7 @@ import React from 'react'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 import { css } from 'styled-components/macro' //eslint-disable-line
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from 'components/misc/Headings.js'
+import { SectionHeading, Subheading as SubheadingBase } from 'components/misc/Headings.js'
 import { SectionDescription } from 'components/misc/Typography.js'
 
 import { ReactComponent as TelegramIcon } from 'images/icon-telegram.svg'
@@ -21,19 +18,15 @@ const Container = styled.div`
 
 const TwoColumn = tw.div`z-20 flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`
-const TextColumn = styled(Column)((props) => [
+const TextColumn = styled(Column)(props => [
   tw`md:w-6/12 mt-16 md:mt-0`,
-  props.textOnLeft
-    ? tw`md:mr-12 lg:mr-16 md:order-first`
-    : tw`md:ml-12 lg:ml-16 md:order-last`,
+  props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ])
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left text-gray-100` //eslint-disable-line
-const Heading = tw(
-  SectionHeading,
-)`mt-4 text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left`
+const Heading = tw(SectionHeading)`mt-4 text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left`
 
 const Steps = tw.ul`mt-12`
 const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`
@@ -57,7 +50,7 @@ export default ({
     </>
   ),
   description = false,
-  textOnLeft = false,
+  textOnLeft = false
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 

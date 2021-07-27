@@ -22,9 +22,7 @@ export default () => {
           <LogoContainer>
             <LogoImg src={logo} />
           </LogoContainer>
-          <CopyrightText>
-            &copy; Copyright 2020, Gyro DAO. All Rights Reserved.
-          </CopyrightText>
+          <CopyrightText>&copy; Copyright 2020, Gyro DAO. All Rights Reserved.</CopyrightText>
         </Row>
       </Content>
     </Container>

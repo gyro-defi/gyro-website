@@ -13,7 +13,7 @@ i18n
     debug: true,
     fallbackLng: 'en',
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false // not needed for react as it escapes by default
     },
     resources: {
       en: {
@@ -22,15 +22,15 @@ i18n
             'what-is-gyro': 'What is Gyro',
             'how-it-works': 'How it Works',
             'how-to-join': 'How to Join',
-            'join-community': 'Join the Community',
+            'join-community': 'Join the Community'
           },
           hero: {
             heading: 'Balance in Motion',
             description:
               'A decentralized treasury-backed currency protocol with the aim to create economic-stability and consistency using protocol-controlled market dynamics',
-            'start-app': 'Launch App',
-          },
-        },
+            'start-app': 'Launch App'
+          }
+        }
       },
       cn: {
         translation: {
@@ -38,11 +38,11 @@ i18n
             'what-is-gyro': '什么是 Gyro',
             'how-it-works': '运作方式',
             'how-to-join': '如何加入',
-            'join-community': '参与社区',
-          },
-        },
-      },
-    },
+            'join-community': '参与社区'
+          }
+        }
+      }
+    }
   })
 
 export default i18n

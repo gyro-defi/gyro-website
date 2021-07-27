@@ -15,10 +15,7 @@ function AnimationReveal({ disabled, children }) {
   const directions = ['left', 'right']
   const childrenWithAnimation = children.map((child, i) => {
     return (
-      <AnimatedSlideInComponent
-        key={i}
-        direction={directions[i % directions.length]}
-      >
+      <AnimatedSlideInComponent key={i} direction={directions[i % directions.length]}>
         {child}
       </AnimatedSlideInComponent>
     )
@@ -42,4 +39,4 @@ function AnimatedSlideInComponent({ children }) {
 }
 
 // eslint-disable-next-line
-export default (props) => <AnimationReveal {...props} />
+export default props => <AnimationReveal {...props} />

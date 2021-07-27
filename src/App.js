@@ -27,10 +27,7 @@ function App() {
           buttonRounded={false}
           textOnLeft={false}
         />
-        <HowToJoin
-          subheading="How to Join"
-          heading="Be part of the open economy of the future"
-        />
+        <HowToJoin subheading="How to Join" heading="Be part of the open economy of the future" />
         <JoinCommunity
           subheading="Join the Community"
           heading="Meet the worldwide community"
