@@ -69,8 +69,8 @@ export default ({
   const defaultCards = [
     {
       imageSrc: Icon01,
-      title: 'GRO Bonding',
-      description: 'Provide liquidity and get GRO at discount.'
+      title: 'GYRO Bonding',
+      description: 'Provide liquidity and get GYRO at discount.'
     },
     {
       imageSrc: Icon02,
@@ -80,7 +80,7 @@ export default ({
     {
       imageSrc: Icon03,
       title: 'Decentralized Exchange',
-      description: 'Swap GRO on any decentralized exchanges.'
+      description: 'Swap GYRO on any decentralized exchanges.'
     }
   ]
 

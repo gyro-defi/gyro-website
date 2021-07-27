@@ -74,12 +74,12 @@ export default ({
             <Heading>{heading}</Heading>
             <Description>
               Fundamentally, Gyro consists of a treasury and liquidity that is managed and owned by the protocol itslef.
-              Gyro's algorithm dynamically mints GRO tokens based on a bond mechanism, and hight staking rewards that
+              Gyro's algorithm dynamically mints GYRO tokens based on a bond mechanism, and hight staking rewards that
               are designed to control inflation and dilution.
             </Description>
             <Description>
               The treasury issues Bonds which then generates profit for the protocol. This allows the treasury to use
-              the profit to mint GRO and distribute them to stakers. With LP bonds, the protocol is able to accumulate
+              the profit to mint GYRO and distribute them to stakers. With LP bonds, the protocol is able to accumulate
               liquidity, ensuring system stability.
             </Description>
             {/* <PrimaryButton

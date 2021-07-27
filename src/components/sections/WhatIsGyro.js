@@ -63,7 +63,7 @@ export default ({
       imageSrc: Icon01,
       title: 'Asset-backed',
       description:
-        'Every GRO is backed by multi-asset stablecoins and GRO-USDT LP in the treasury. This ensures GRO will be greater than or equal to 1 USDT.'
+        'Every GYRO is backed by multi-asset stablecoins and GYRO-USDT LP in the treasury. This ensures GYRO will be greater than or equal to 1 USDT.'
     },
     {
       imageSrc: Icon02,
@@ -75,7 +75,7 @@ export default ({
       imageSrc: Icon03,
       title: 'Community Governed',
       description:
-        'Gyro is a community-driven open protocol where GRO token holders can suggest, debate and implement changes to Gyro.'
+        'Gyro is a community-driven open protocol where GYRO token holders can suggest, debate and implement changes to Gyro.'
     }
   ]
 
