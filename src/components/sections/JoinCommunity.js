@@ -65,20 +65,21 @@ export default ({
     {
       Icon: TelegramIcon,
       title: 'Community Chat',
-      description:
-        'Ask general questions and chat with the worldwide community on Telegram',
+      description: 'Ask general questions and chat with the worldwide community on Telegram',
+      link: 'https://t.me/GyroDAO'
     },
     {
       Icon: TwitterIcon,
       title: 'Twitter',
-      description:
-        'Follow @GyroDAO to get the latest news and updates from across the ecosystem',
+      description: 'Follow @GyroDAO to get the latest news and updates from across the ecosystem',
+      link: 'https://twitter.com/GyroDAO'
     },
     {
       Icon: GithubIcon,
       title: 'Repository',
       description: 'Visit our Github repo for the latest codes',
-    },
+      link: 'https://github.com/gyro-defi/'
+    }
   ]
 
   return (
@@ -95,14 +96,15 @@ export default ({
           <TextContent>
             <Steps>
               {socialChannels.map((step, index) => (
-                <Step key={index}>
-                  <FeatureIconContainer>{<step.Icon />}</FeatureIconContainer>
-
-                  <StepText>
-                    <StepHeading>{step.title}</StepHeading>
-                    <StepDescription>{step.description}</StepDescription>
-                  </StepText>
-                </Step>
+                <a key={index} href={step.link}>
+                  <Step>
+                    <FeatureIconContainer>{<step.Icon />}</FeatureIconContainer>
+                    <StepText>
+                      <StepHeading>{step.title}</StepHeading>
+                      <StepDescription>{step.description}</StepDescription>
+                    </StepText>
+                  </Step>
+                </a>
               ))}
             </Steps>
           </TextContent>
