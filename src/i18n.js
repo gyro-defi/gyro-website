@@ -25,9 +25,8 @@ i18n
             'join-community': 'Join the Community'
           },
           hero: {
-            heading: 'Balance in Motion',
-            description:
-              'A decentralized treasury-backed currency protocol with the aim to create economic-stability and consistency using protocol-controlled market dynamics',
+            heading: 'Build Wealth',
+            description: 'Weak hands peg, diamond hands HODL, smart hands hedge. What hands do you have?',
             'start-app': 'Launch App'
           }
         }
