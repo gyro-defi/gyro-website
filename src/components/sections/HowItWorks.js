@@ -73,8 +73,8 @@ export default ({
             <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
             <Description>
-              Fundamentally, Gyro consists of a treasury and liquidity that is managed and owned by the protocol itslef.
-              Gyro's algorithm dynamically mints GYRO tokens based on a bond mechanism, and hight staking rewards that
+              Fundamentally, Gyro consists of a treasury and liquidity that is managed and owned by the protocol itself.
+              Gyro's algorithm dynamically mints GYRO tokens based on a bond mechanism, and high staking rewards that
               are designed to control inflation and dilution.
             </Description>
             <Description>

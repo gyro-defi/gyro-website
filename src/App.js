@@ -31,7 +31,7 @@ function App() {
         <JoinCommunity
           subheading="Join the Community"
           heading="Meet the worldwide community"
-          description="Join our burgeoning community of innovators connected all over the wrold, and building the new era of open finance."
+          description="Join our burgeoning community of innovators connected all over the world, and building the new era of open finance."
         />
       </AnimationRevealPage>
       <Footer />
