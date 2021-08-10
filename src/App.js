@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import tw from 'twin.macro'
 import 'tailwindcss/dist/base.css'
 import 'style.css'
 import { css } from 'styled-components/macro' //eslint-disable-line
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import AnimationRevealPage from 'helpers/AnimationRevealPage.js'
 
@@ -16,6 +17,21 @@ import Footer from 'components/sections/Footer.js'
 const StyledDiv = tw.div`font-display min-h-screen text-gray-100 p-8 overflow-hidden bg-black`
 
 function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route path="/sweepstakes">
+          <Sweepstakes />
+        </Route>
+      </Switch>
+    </Router>
+  )
+}
+
+function LandingPage() {
   return (
     <StyledDiv className="App">
       <AnimationRevealPage>
@@ -37,6 +53,13 @@ function App() {
       <Footer />
     </StyledDiv>
   )
+}
+
+function Sweepstakes() {
+  useEffect(() => {
+    window.location.href = 'https://app.viralsweep.com/sweeps/full/75f7a1-92366?framed=1'
+  }, [])
+  return <h2>Redirecting ...</h2>
 }
 
 export default App
