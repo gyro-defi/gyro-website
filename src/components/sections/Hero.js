@@ -73,7 +73,9 @@ export default () => {
           <Content>
             <Heading>{t('hero.heading')}</Heading>
             <Description ref={myRef}>{t('hero.description')}</Description>
-            <PrimaryAction>{t('hero.start-app')}</PrimaryAction>
+            <PrimaryAction>
+              <a href="https://app.gyro.money">{t('hero.start-app')}</a>
+            </PrimaryAction>
           </Content>
         </HeroContainer>
       </Content2Xl>
