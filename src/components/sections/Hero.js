@@ -41,7 +41,7 @@ const Heading = styled.h1`
 
 const Description = tw(SectionDescription)`mt-4 max-w-2xl text-gray-100 text-2xl mx-auto lg:mx-0`
 
-const PrimaryAction = tw.button`rounded-full px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 font-bold shadow transition duration-300 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:outline-none focus:shadow-outline`
+const PrimaryAction = tw.button`rounded-full px-8 py-3 mt-10 mx-4 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 font-bold shadow transition duration-300 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:outline-none focus:shadow-outline`
 
 // eslint-disable-next-line
 export default () => {
@@ -73,9 +73,16 @@ export default () => {
           <Content>
             <Heading>{t('hero.heading')}</Heading>
             <Description ref={myRef}>{t('hero.description')}</Description>
-            <PrimaryAction>
-              <a href="https://app.gyro.money">{t('hero.start-app')}</a>
-            </PrimaryAction>
+            <div>
+              <PrimaryAction>
+                <a href="https://app.gyro.money">{t('hero.start-app')}</a>
+              </PrimaryAction>
+              <PrimaryAction>
+                <a href="https://pancakeswap.finance/swap?inputCurrency=0x55d398326f99059ff775485246999027b3197955&outputCurrency=0x1b239abe619e74232c827fbe5e49a4c072bd869d">
+                  {t('hero.buy-gyro')}
+                </a>
+              </PrimaryAction>
+            </div>
           </Content>
         </HeroContainer>
       </Content2Xl>
