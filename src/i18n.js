@@ -26,7 +26,7 @@ i18n
           },
           hero: {
             heading: 'Build Wealth',
-            description: 'Weak hands peg, diamond hands HODL, smart hands hedge. What hands do you have?',
+            description: 'The safety of stable coins with the growth of traditional coins.',
             'start-app': 'Launch App',
             'buy-gyro': 'Buy GYRO'
           }
