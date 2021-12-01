@@ -56,9 +56,10 @@ export default () => {
   )
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="#what-is-gyro">{t('menu.what-is-gyro')}</NavLink>
-      <NavLink href="#how-it-works">{t('menu.how-it-works')}</NavLink>
-      <NavLink href="#how-to-join">{t('menu.how-to-join')}</NavLink>
+      <NavLink href="https://docs.gyro.money">Docs</NavLink>
+      <NavLink href="https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Gyro-v1.0.pdf">
+        Audits
+      </NavLink>
       <NavLink href="#join-community">{t('menu.join-community')}</NavLink>
       {/* <PrimaryLink href="#">Signup</PrimaryLink> */}
     </NavLinks>

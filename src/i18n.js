@@ -22,7 +22,7 @@ i18n
             'what-is-gyro': 'What is Gyro',
             'how-it-works': 'How it Works',
             'how-to-join': 'How to Join',
-            'join-community': 'Join the Community'
+            'join-community': 'Community'
           },
           hero: {
             heading: 'Build Wealth',

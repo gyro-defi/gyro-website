@@ -8,6 +8,8 @@ import { SectionDescription } from 'components/misc/Typography.js'
 import { ReactComponent as TelegramIcon } from 'images/icon-telegram.svg'
 import { ReactComponent as TwitterIcon } from 'images/icon-twitter.svg'
 import { ReactComponent as GithubIcon } from 'images/icon-github.svg'
+import { ReactComponent as DiscordIcon } from 'images/icon-discord.svg'
+
 import sectionBgImage from 'images/section-06-bg.jpg'
 
 const Container = styled.div`
@@ -57,7 +59,7 @@ export default ({
   const socialChannels = [
     {
       Icon: TelegramIcon,
-      title: 'Community Chat',
+      title: 'Telegram',
       description: 'Ask general questions and chat with the worldwide community on Telegram',
       link: 'https://t.me/GyroDAO'
     },
@@ -66,6 +68,12 @@ export default ({
       title: 'Twitter',
       description: 'Follow @GyroDAO to get the latest news and updates from across the ecosystem',
       link: 'https://twitter.com/GyroDAO'
+    },
+    {
+      Icon: DiscordIcon,
+      title: 'Discord',
+      description: 'Join our Discord to debate, offer suggestions and propose improvements',
+      link: 'https://discord.com/invite/B22gZh4jer'
     },
     {
       Icon: GithubIcon,
