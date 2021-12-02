@@ -58,7 +58,7 @@ export default () => {
     <NavLinks key={1}>
       <NavLink href="https://docs.gyro.money">Docs</NavLink>
       <NavLink href="https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Gyro-v1.0.pdf">
-        Audits
+        Audit
       </NavLink>
       <NavLink href="#join-community">{t('menu.join-community')}</NavLink>
       {/* <PrimaryLink href="#">Signup</PrimaryLink> */}
