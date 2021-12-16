@@ -57,8 +57,17 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `
 
+export const headerData = tw.nav`flex flex-1 items-center justify-start`
+
 // eslint-disable-next-line
-export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = 'lg' }) => {
+export default ({
+  roundedHeaderButton = false,
+  logoLink,
+  links,
+  marqueeData,
+  className,
+  collapseBreakpointClass = 'lg'
+}) => {
   /*
    * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
    * This links props should be an array of "NavLinks" components which is exported from this file.
@@ -97,14 +106,18 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
     </LogoLink>
   )
 
+  const defaultMarqueeData = <headerData>Treact</headerData>
+
   logoLink = logoLink || defaultLogoLink
   links = links || defaultLinks
+  marqueeData = marqueeData || defaultMarqueeData
 
   return (
     <Header className={className || 'header-light'}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
         {links}
+        {marqueeData}
       </DesktopNavLinks>
 
       <MobileNavLinksContainer css={collapseBreakpointCss.mobileNavLinksContainer}>
@@ -119,6 +132,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
         <NavToggle onClick={toggleNavbar} className={showNavLinks ? 'open' : 'closed'}>
           {showNavLinks ? <CloseIcon tw="w-6 h-6" /> : <MenuIcon tw="w-6 h-6" />}
         </NavToggle>
+        {marqueeData}
       </MobileNavLinksContainer>
     </Header>
   )

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import AnimationRevealPage from 'helpers/AnimationRevealPage.js'
 
+import Header from 'components/sections/Header'
 import Hero from 'components/sections/Hero.js'
 import WhatIsGyro from 'components/sections/WhatIsGyro.js'
 import HowItWorks from 'components/sections/HowItWorks.js'
@@ -34,6 +35,7 @@ function App() {
 function LandingPage() {
   return (
     <StyledDiv className="App">
+      <Header />
       <AnimationRevealPage>
         <Hero />
         <WhatIsGyro subheading="What is Gyro" />
