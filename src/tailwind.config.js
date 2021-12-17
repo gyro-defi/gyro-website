@@ -15,6 +15,7 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
+      navBg: '#14040E',
 
       primary: {
         100: '#a273ff',

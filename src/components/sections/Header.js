@@ -3,6 +3,8 @@ import tw from 'twin.macro'
 import styled from 'styled-components'
 import { css } from 'styled-components/macro' //eslint-disable-line
 import { useTranslation } from 'react-i18next'
+import { useQuery, gql } from '@apollo/client'
+import NumberFormat from 'react-number-format'
 
 import HeaderBase, { NavLink as NavLinkBase, NavLinks, PrimaryLink as PrimaryLinkBase } from '../headers/light.js'
 
@@ -38,34 +40,192 @@ export default () => {
     </NavLinks>
   ]
 
+  const GYRO_PROTOCOL = gql`
+    {
+      protocolMetrics(first: 1, orderBy: timestamp, orderDirection: desc) {
+        timestamp
+        gyroCirculatingSupply
+        sGyroCirculatingSupply
+        totalSupply
+        gyroPrice
+        marketCap
+        totalValueLocked
+        treasuryMarketValue
+        treasuryRiskFreeValue
+        runwayCurrent
+        currentAPY
+        nextEpochRebase
+        nextRebaseRewards
+      }
+    }
+  `
+  const { data, loading, error } = useQuery(GYRO_PROTOCOL)
+  let price = ''
+  let apy = ''
+  let runway = ''
+  let treasury = ''
+  let marketCap = ''
+  let nextYield = ''
+  let rfv = ''
+  if (!loading && data) {
+    const protocolMretrics = data.protocolMetrics[0]
+    price = parseFloat(protocolMretrics.gyroPrice).toFixed(2)
+    apy = parseFloat(protocolMretrics.currentAPY).toFixed(2)
+    runway = parseInt(protocolMretrics.runwayCurrent)
+    treasury = parseInt(protocolMretrics.treasuryMarketValue)
+    marketCap = parseInt(parseFloat(protocolMretrics.totalSupply) * parseFloat(protocolMretrics.gyroPrice))
+    nextYield = parseFloat(protocolMretrics.nextEpochRebase).toFixed(4)
+    rfv = parseInt(protocolMretrics.treasuryRiskFreeValue)
+  }
+
   const marqueeData = (
     <div className="header-data">
       <div className="marquee">
         <div className="marquee-inner">
           <ul className="header-data-scroll">
             <li>
-              GYRO Price <strong>$372.694</strong>
+              Price{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={price}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    renderText={(value, props) => value}
+                    prefix="$"
+                  />
+                )}
+              </strong>
             </li>
             <li>
-              APY <strong>107,561.2999%</strong>
+              APY{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={apy}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    suffix={'%'}
+                    renderText={(value, props) => value}
+                  />
+                )}
+              </strong>
             </li>
             <li>
-              Runway <strong>101.5 Days</strong>
+              Runway{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={runway}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    renderText={(value, props) => value}
+                  />
+                )}{' '}
+                Days
+              </strong>
             </li>
             <li>
-              Treasury <strong>$372.694</strong>
+              Treasury{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={treasury}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    prefix="$"
+                    renderText={(value, props) => value}
+                  />
+                )}
+              </strong>
             </li>
             <li>
-              GYRO Price <strong>$372.694</strong>
+              Market Cap{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={marketCap}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    prefix="$"
+                    renderText={(value, props) => value}
+                  />
+                )}
+              </strong>
             </li>
             <li>
-              APY <strong>107,561.2999%</strong>
+              Next Yield{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={nextYield}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    suffix="%"
+                    renderText={(value, props) => value}
+                  />
+                )}
+              </strong>
             </li>
             <li>
-              Runway <strong>101.5 Days</strong>
+              RFV{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={rfv}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    prefix="$"
+                    renderText={(value, props) => value}
+                  />
+                )}
+              </strong>
             </li>
             <li>
-              Treasury <strong>$372.694</strong>
+              Price{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={price}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    renderText={(value, props) => value}
+                    prefix="$"
+                  />
+                )}
+              </strong>
+            </li>
+            <li>
+              APY{' '}
+              <strong>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={apy}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    suffix={'%'}
+                    renderText={(value, props) => value}
+                  />
+                )}
+              </strong>
             </li>
           </ul>
         </div>

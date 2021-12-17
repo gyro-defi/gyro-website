@@ -73,7 +73,7 @@ export default ({
       Icon: DiscordIcon,
       title: 'Discord',
       description: 'Join our Discord to debate, offer suggestions and propose improvements',
-      link: 'https://discord.com/invite/B22gZh4jer'
+      link: 'https://discord.com/invite/gyrodao'
     },
     {
       Icon: GithubIcon,

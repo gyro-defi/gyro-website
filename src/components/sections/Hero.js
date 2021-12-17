@@ -1,4 +1,6 @@
 import React, { useRef } from 'react'
+import { useQuery, gql } from '@apollo/client'
+import NumberFormat from 'react-number-format'
 import tw from 'twin.macro'
 import styled from 'styled-components'
 import { css } from 'styled-components/macro' //eslint-disable-line
@@ -38,7 +40,7 @@ const PrimaryAction = tw.button`rounded-full px-8 py-3 mt-4 sm:mt-5 mx-4 text-sm
 
 const SocialSticky = tw.div`flex flex-col justify-center items-center fixed bottom-0 right-0 pr-4 md:pr-10 pb-5 md:pb-8 z-40`
 const SocialAction = tw.button`sm:mt-4 font-bold shadow transition duration-300 mb-3 md:mb-0`
-const SocialLink = styled.div`
+const SocialLink = styled.a`
   img {
     ${tw`w-6`}
   }
@@ -61,6 +63,39 @@ export default () => {
   const myRef = useRef()
 
   const { t } = useTranslation()
+
+  const GYRO_PROTOCOL = gql`
+    {
+      protocolMetrics(first: 1, orderBy: timestamp, orderDirection: desc) {
+        timestamp
+        gyroCirculatingSupply
+        sGyroCirculatingSupply
+        totalSupply
+        gyroPrice
+        marketCap
+        totalValueLocked
+        treasuryMarketValue
+        treasuryRiskFreeValue
+        runwayCurrent
+        currentAPY
+        nextEpochRebase
+        nextRebaseRewards
+      }
+    }
+  `
+  const { data, loading, error } = useQuery(GYRO_PROTOCOL)
+  let currentAPY = ''
+  let totalStaked = ''
+  let treasuryBalance = ''
+  if (!loading && data) {
+    const protocolMretrics = data.protocolMetrics[0]
+    // console.log(protocolMretrics)
+    currentAPY = parseFloat(protocolMretrics.currentAPY).toFixed(2)
+    totalStaked = parseFloat(
+      (parseFloat(protocolMretrics.sGyroCirculatingSupply) / parseFloat(protocolMretrics.gyroCirculatingSupply)) * 100
+    ).toFixed(2)
+    treasuryBalance = parseInt(protocolMretrics.treasuryMarketValue)
+  }
 
   return (
     <Container>
@@ -85,17 +120,17 @@ export default () => {
 
         <SocialSticky>
           <SocialAction>
-            <SocialLink href="/">
+            <SocialLink href="https://t.me/GyroDAO" target="_blank">
               <img src={telegramIcon} alt="Telegram" />
             </SocialLink>
           </SocialAction>
           <SocialAction>
-            <SocialLink href="/">
+            <SocialLink href="https://twitter.com/GyroDAO" target="_blank">
               <img src={twitterIcon} alt="Twitter" />
             </SocialLink>
           </SocialAction>
           <SocialAction>
-            <SocialLink href="/">
+            <SocialLink href="https://discord.com/invite/gyrodao" target="_blank">
               <img src={discordIcon} alt="Discord" />
             </SocialLink>
           </SocialAction>
@@ -107,15 +142,51 @@ export default () => {
           <ThreeColumnContainer>
             <Column class="">
               <HeroFooterTitle>Total Staked</HeroFooterTitle>
-              <HeroFooterValue>360,157</HeroFooterValue>
+              <HeroFooterValue>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={totalStaked}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    renderText={(value, props) => value}
+                    suffix="%"
+                  />
+                )}
+              </HeroFooterValue>
             </Column>
             <Column class="">
               <HeroFooterTitle>Treasury Balance</HeroFooterTitle>
-              <HeroFooterValue>$680,173,922</HeroFooterValue>
+              <HeroFooterValue>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={treasuryBalance}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    renderText={(value, props) => value}
+                    prefix="$"
+                  />
+                )}
+              </HeroFooterValue>
             </Column>
             <Column class="">
               <HeroFooterTitle>Current APY</HeroFooterTitle>
-              <HeroFooterValue>89,424.5%</HeroFooterValue>
+              <HeroFooterValue>
+                {loading ? (
+                  '-'
+                ) : (
+                  <NumberFormat
+                    value={currentAPY}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    suffix={'%'}
+                    renderText={(value, props) => value}
+                  />
+                )}
+              </HeroFooterValue>
             </Column>
           </ThreeColumnContainer>
         </ButtonContainer>
