@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 import tw from 'twin.macro'
 import 'tailwindcss/dist/base.css'
 import 'style.css'
@@ -7,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import AnimationRevealPage from 'helpers/AnimationRevealPage.js'
 
+import Header from 'components/sections/Header'
 import Hero from 'components/sections/Hero.js'
 import WhatIsGyro from 'components/sections/WhatIsGyro.js'
 import HowItWorks from 'components/sections/HowItWorks.js'
@@ -16,24 +18,32 @@ import Footer from 'components/sections/Footer.js'
 
 const StyledDiv = tw.div`font-display min-h-screen text-gray-100 p-8 overflow-hidden bg-black`
 
+const client = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/gyro-defi/gyro-subgraph',
+  cache: new InMemoryCache()
+})
+
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Route path="/sweepstakes">
-          <Sweepstakes />
-        </Route>
-      </Switch>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
+          <Route path="/sweepstakes">
+            <Sweepstakes />
+          </Route>
+        </Switch>
+      </Router>
+    </ApolloProvider>
   )
 }
 
 function LandingPage() {
   return (
     <StyledDiv className="App">
+      <Header />
       <AnimationRevealPage>
         <Hero />
         <WhatIsGyro subheading="What is Gyro" />
