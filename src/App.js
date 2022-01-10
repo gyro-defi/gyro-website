@@ -19,7 +19,7 @@ import Footer from 'components/sections/Footer.js'
 const StyledDiv = tw.div`font-display min-h-screen text-gray-100 p-8 overflow-hidden bg-black`
 
 const client = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/gyro-defi/gyro-subgraph',
+  uri: 'https://api.thegraph.com/subgraphs/name/gyro-defi/gyro-v2',
   cache: new InMemoryCache()
 })
 

@@ -70,7 +70,11 @@ export default () => {
   if (!loading && data) {
     const protocolMretrics = data.protocolMetrics[0]
     price = parseFloat(protocolMretrics.gyroPrice).toFixed(2)
-    apy = parseFloat(protocolMretrics.currentAPY).toFixed(2)
+    // apy = parseFloat(protocolMretrics.currentAPY).toFixed(2)
+
+    let nextEpochRebase_number = Number.parseFloat(protocolMretrics.nextEpochRebase)
+    apy = (Math.pow(nextEpochRebase_number / 100 + 1, 365 * 3 - 1) * 100).toFixed(2)
+
     runway = parseInt(protocolMretrics.runwayCurrent)
     treasury = parseInt(protocolMretrics.treasuryMarketValue)
     marketCap = parseInt(parseFloat(protocolMretrics.totalSupply) * parseFloat(protocolMretrics.gyroPrice))
