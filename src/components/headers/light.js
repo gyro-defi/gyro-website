@@ -57,7 +57,7 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `
 
-export const headerData = tw.nav`flex flex-1 items-center justify-start`
+export const HeaderData = tw.nav`flex flex-1 items-center justify-start`
 
 // eslint-disable-next-line
 export default ({
@@ -106,7 +106,7 @@ export default ({
     </LogoLink>
   )
 
-  const defaultMarqueeData = <headerData>Treact</headerData>
+  const defaultMarqueeData = <HeaderData></HeaderData>
 
   logoLink = logoLink || defaultLogoLink
   links = links || defaultLinks

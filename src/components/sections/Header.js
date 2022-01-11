@@ -3,12 +3,11 @@ import tw from 'twin.macro'
 import styled from 'styled-components'
 import { css } from 'styled-components/macro' //eslint-disable-line
 import { useTranslation } from 'react-i18next'
-import { useQuery, gql } from '@apollo/client'
 import NumberFormat from 'react-number-format'
 
 import HeaderBase, { NavLink as NavLinkBase, NavLinks, PrimaryLink as PrimaryLinkBase } from '../headers/light.js'
-
 import logoImageSrc from 'images/logo-light.svg'
+
 const Header = tw(HeaderBase)`max-w-none w-full`
 const NavLink = tw(NavLinkBase)`lg:text-gray-100 lg:hocus:text-gray-300 lg:hocus:border-gray-100`
 const LogoLink = styled.div`
@@ -21,7 +20,7 @@ const LogoLink = styled.div`
 const PrimaryLink = tw(PrimaryLinkBase)`rounded-full lg:ml-6` //eslint-disable-line
 
 // eslint-disable-next-line
-export default () => {
+const HeaderFC = props => {
   const { t } = useTranslation()
 
   const logoLink = (
@@ -40,198 +39,130 @@ export default () => {
     </NavLinks>
   ]
 
-  const GYRO_PROTOCOL = gql`
-    {
-      protocolMetrics(first: 1, orderBy: timestamp, orderDirection: desc) {
-        timestamp
-        gyroCirculatingSupply
-        sGyroCirculatingSupply
-        totalSupply
-        gyroPrice
-        marketCap
-        totalValueLocked
-        treasuryMarketValue
-        treasuryRiskFreeValue
-        runwayCurrent
-        currentAPY
-        nextEpochRebase
-        nextRebaseRewards
-      }
-    }
-  `
-  const { data, loading, error } = useQuery(GYRO_PROTOCOL)
-  let price = ''
-  let apy = ''
-  let runway = ''
-  let treasury = ''
-  let marketCap = ''
-  let nextYield = ''
-  let rfv = ''
-  if (!loading && data) {
-    const protocolMretrics = data.protocolMetrics[0]
-    price = parseFloat(protocolMretrics.gyroPrice).toFixed(2)
-    apy = parseFloat(protocolMretrics.currentAPY).toFixed(2)
-    runway = parseInt(protocolMretrics.runwayCurrent)
-    treasury = parseInt(protocolMretrics.treasuryMarketValue)
-    marketCap = parseInt(parseFloat(protocolMretrics.totalSupply) * parseFloat(protocolMretrics.gyroPrice))
-    nextYield = parseFloat(protocolMretrics.nextEpochRebase).toFixed(4)
-    rfv = parseInt(protocolMretrics.treasuryRiskFreeValue)
-  }
+  let marqueeData = null
 
-  const marqueeData = (
-    <div className="header-data">
-      <div className="marquee">
-        <div className="marquee-inner">
-          <ul className="header-data-scroll">
-            <li>
-              Price{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+  if (props.protocolMetrics) {
+    const protocolMetrics = props.protocolMetrics
+
+    marqueeData = (
+      <div className="header-data">
+        <div className="marquee">
+          <div className="marquee-inner">
+            <ul className="header-data-scroll">
+              <li>
+                Price{' '}
+                <strong>
                   <NumberFormat
-                    value={price}
+                    value={protocolMetrics.price}
                     displayType={'text'}
                     thousandSeparator={true}
                     renderText={(value, props) => value}
                     prefix="$"
                   />
-                )}
-              </strong>
-            </li>
-            <li>
-              APY{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                </strong>
+              </li>
+              <li>
+                APY{' '}
+                <strong>
                   <NumberFormat
-                    value={apy}
+                    value={protocolMetrics.apy}
                     displayType={'text'}
                     thousandSeparator={true}
                     suffix={'%'}
                     renderText={(value, props) => value}
                   />
-                )}
-              </strong>
-            </li>
-            <li>
-              Runway{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                </strong>
+              </li>
+              <li>
+                Runway{' '}
+                <strong>
                   <NumberFormat
-                    value={runway}
+                    value={protocolMetrics.runway}
                     displayType={'text'}
                     thousandSeparator={true}
                     renderText={(value, props) => value}
-                  />
-                )}{' '}
-                Days
-              </strong>
-            </li>
-            <li>
-              Treasury{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                  />{' '}
+                  Days
+                </strong>
+              </li>
+              <li>
+                Treasury{' '}
+                <strong>
                   <NumberFormat
-                    value={treasury}
+                    value={protocolMetrics.treasury}
                     displayType={'text'}
                     thousandSeparator={true}
                     prefix="$"
                     renderText={(value, props) => value}
                   />
-                )}
-              </strong>
-            </li>
-            <li>
-              Market Cap{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                </strong>
+              </li>
+              <li>
+                Market Cap{' '}
+                <strong>
                   <NumberFormat
-                    value={marketCap}
+                    value={protocolMetrics.marketCap}
                     displayType={'text'}
                     thousandSeparator={true}
                     prefix="$"
                     renderText={(value, props) => value}
                   />
-                )}
-              </strong>
-            </li>
-            <li>
-              Next Yield{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                </strong>
+              </li>
+              <li>
+                Next Yield{' '}
+                <strong>
                   <NumberFormat
-                    value={nextYield}
+                    value={protocolMetrics.nextYield}
                     displayType={'text'}
                     thousandSeparator={true}
                     suffix="%"
                     renderText={(value, props) => value}
                   />
-                )}
-              </strong>
-            </li>
-            <li>
-              RFV{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                </strong>
+              </li>
+              <li>
+                RFV{' '}
+                <strong>
                   <NumberFormat
-                    value={rfv}
+                    value={protocolMetrics.rfv}
                     displayType={'text'}
                     thousandSeparator={true}
                     prefix="$"
                     renderText={(value, props) => value}
                   />
-                )}
-              </strong>
-            </li>
-            <li>
-              Price{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                </strong>
+              </li>
+              <li>
+                Price{' '}
+                <strong>
                   <NumberFormat
-                    value={price}
+                    value={protocolMetrics.price}
                     displayType={'text'}
                     thousandSeparator={true}
                     renderText={(value, props) => value}
                     prefix="$"
                   />
-                )}
-              </strong>
-            </li>
-            <li>
-              APY{' '}
-              <strong>
-                {loading ? (
-                  '-'
-                ) : (
+                </strong>
+              </li>
+              <li>
+                APY{' '}
+                <strong>
                   <NumberFormat
-                    value={apy}
+                    value={protocolMetrics.apy}
                     displayType={'text'}
                     thousandSeparator={true}
                     suffix={'%'}
                     renderText={(value, props) => value}
                   />
-                )}
-              </strong>
-            </li>
-          </ul>
+                </strong>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 
   useEffect(() => {
     const header = document.getElementById('appHeader')
@@ -253,3 +184,5 @@ export default () => {
     </div>
   )
 }
+
+export default HeaderFC
