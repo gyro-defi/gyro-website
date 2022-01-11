@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import { useQuery, gql } from '@apollo/client'
 import NumberFormat from 'react-number-format'
 import tw from 'twin.macro'
 import styled from 'styled-components'
@@ -59,42 +58,22 @@ const HeroFooterValue = styled.h1`
 `
 
 // eslint-disable-next-line
-export default () => {
+const Hero = props => {
   const myRef = useRef()
 
   const { t } = useTranslation()
 
-  const GYRO_PROTOCOL = gql`
-    {
-      protocolMetrics(first: 1, orderBy: timestamp, orderDirection: desc) {
-        timestamp
-        gyroCirculatingSupply
-        sGyroCirculatingSupply
-        totalSupply
-        gyroPrice
-        marketCap
-        totalValueLocked
-        treasuryMarketValue
-        treasuryRiskFreeValue
-        runwayCurrent
-        currentAPY
-        nextEpochRebase
-        nextRebaseRewards
-      }
-    }
-  `
-  const { data, loading, error } = useQuery(GYRO_PROTOCOL)
   let currentAPY = ''
   let totalStaked = ''
   let treasuryBalance = ''
-  if (!loading && data) {
-    const protocolMretrics = data.protocolMetrics[0]
-    // console.log(protocolMretrics)
-    currentAPY = parseFloat(protocolMretrics.currentAPY).toFixed(2)
-    totalStaked = parseFloat(
-      (parseFloat(protocolMretrics.sGyroCirculatingSupply) / parseFloat(protocolMretrics.gyroCirculatingSupply)) * 100
-    ).toFixed(2)
-    treasuryBalance = parseInt(protocolMretrics.treasuryMarketValue)
+  let loading = true
+  if (props.protocolMetrics) {
+    const protocolMretrics = props.protocolMetrics
+
+    currentAPY = protocolMretrics.apy
+    totalStaked = protocolMretrics.totalStaked
+    treasuryBalance = protocolMretrics.treasuryMarketValue
+    loading = false
   }
 
   return (
@@ -140,7 +119,7 @@ export default () => {
       <div className="hero-footer">
         <ButtonContainer>
           <ThreeColumnContainer>
-            <Column class="">
+            <Column>
               <HeroFooterTitle>Total Staked</HeroFooterTitle>
               <HeroFooterValue>
                 {loading ? (
@@ -156,7 +135,7 @@ export default () => {
                 )}
               </HeroFooterValue>
             </Column>
-            <Column class="">
+            <Column>
               <HeroFooterTitle>Treasury Balance</HeroFooterTitle>
               <HeroFooterValue>
                 {loading ? (
@@ -172,7 +151,7 @@ export default () => {
                 )}
               </HeroFooterValue>
             </Column>
-            <Column class="">
+            <Column>
               <HeroFooterTitle>Current APY</HeroFooterTitle>
               <HeroFooterValue>
                 {loading ? (
@@ -194,3 +173,5 @@ export default () => {
     </Container>
   )
 }
+
+export default Hero
